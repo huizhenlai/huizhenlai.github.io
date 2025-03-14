@@ -270,7 +270,11 @@ body {
     color: var(--main_text_color);
 }
 
-
+.highlight-time {
+    font-weight: bold;  /* 加粗 */
+    color: #bb9b9b;  /* 高亮颜色（橙红色） */
+    font-size: 15px;  /* 放大字体 */
+}
 
 .focus {
     width: 8px;
