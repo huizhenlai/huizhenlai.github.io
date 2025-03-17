@@ -1,0 +1,32 @@
+name: Deploy Hugo Blog
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "blog/**"
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive  # 关键：递归拉取主题子模块
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.125.7"  # 与主题兼容的版本
+
+      - name: Build Blog
+        working-directory: ./blog
+        run: hugo --minify --baseURL "https://huizhenalai.github.io/blog/"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./blog/public
+          destination_dir: blog  # 部署到 gh-pages 分支的 /blog 目录
