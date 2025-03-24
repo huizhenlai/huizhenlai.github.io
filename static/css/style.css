@@ -199,12 +199,19 @@ body {
 .left-div {
     flex-shrink: 0;
     width: 100%;
+    height: auto;
     border-radius: 13px;
     margin-top: 15px;
     padding: 20px;
     backdrop-filter: blur(var(--card_filter));
     -webkit-backdrop-filter: blur(var(--card_filter));
     background: var(--item_bg_color);
+    /* 提升文本可读性 */
+    color: var(--text_color, #ffffff);
+
+    /* 防止外边距合并 */
+    display: flex;
+    flex-direction: column;
 }
 
 .left-des {
@@ -250,7 +257,7 @@ body {
 
 #line {
     width: 100%;
-    height: 200px;
+    height: 210px;
     font-size: 13px;
     padding-left: 8px;
     scroll-snap-type: y mandatory;
@@ -270,7 +277,7 @@ body {
 .highlight-time {
     font-weight: bold;  /* 加粗 */
     color: #bb9b9b;  /* 高亮颜色（橙红色） */
-    font-size: 15px;  /* 放大字体 */
+    font-size: 12px;  /* 放大字体 */
 }
 
 .focus {
@@ -788,10 +795,6 @@ footer {
 
 
 
-
-
-
-
 .onoffswitch {
     position: relative;
     width: 38px;
@@ -873,4 +876,61 @@ footer {
 
 .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
     right: 50%;
+}
+
+/* 新增标题居中样式 */
+.exploration-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.exploration-header h3 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.2em;
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+/* 双行布局改造 */
+.explore-item {
+  display: grid;
+  grid-template-rows: auto auto;
+  min-height: 40px;
+  padding: 10px;
+  gap: 5px;
+}
+
+/* 技术标签容器 */
+.tech-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-self: start;
+  font-size: 0.7em;
+}
+
+/* 进度条容器 */
+.progress-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  align-self: end;
+}
+
+/* 响应式进度条 */
+.slim-progress {
+  width: 120px;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.slim-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #00d4ff, #ff00ff);
+  transition: width 0.6s ease;
 }
